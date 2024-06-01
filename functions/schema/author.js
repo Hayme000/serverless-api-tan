@@ -13,6 +13,10 @@ const inventorySchema = new Schema({
     reorderPoint: {
         type: Number,
         required: true
+    },
+    price: {
+        type: Number,
+        required: true,
     }
 });
 

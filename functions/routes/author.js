@@ -18,9 +18,9 @@ router.get('/:id', getInventoryItem, (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, quantity, reorderPoint } = req.body;
-        if (!name || !quantity || !reorderPoint) {
-            return res.status(400).json({ message: 'Name, quantity, and reorder point are required' });
+        const { name, quantity, reorderPoint, price } = req.body;
+        if (!name || !quantity || !reorderPoint || !price) { // Updated validation to include price
+            return res.status(400).json({ message: 'Name, quantity, reorder point, and price are required' });
         }
         
         const existingItem = await InventoryItemModel.findOne({ name });
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ message: 'Item already exists' });
         }
         
-        const newItem = new InventoryItemModel({ name, quantity, reorderPoint }); // Updated model name
+        const newItem = new InventoryItemModel({ name, quantity, reorderPoint, price }); // Include price in the new item creation
         const savedItem = await newItem.save();
         res.status(201).json({ message: 'Item created successfully', item: savedItem });
     } catch (err) {
@@ -59,7 +59,7 @@ router.delete('/:id', getInventoryItem, async (req, res) => {
 // Middleware function to get a single inventory item by ID
 async function getInventoryItem(req, res, next) {
     try {
-        const inventoryItem = await InventoryItemModel.findById(req.params.id); // Updated model name
+        const inventoryItem = await InventoryItemModel.findById(req.params.id);
         if (!inventoryItem) {
             return res.status(404).json({ message: 'Inventory item not found' });
         }
