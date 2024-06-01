@@ -6,9 +6,7 @@ const cors =  require('cors');
 
 const app = express();
 
-const dbCloudUrl =
-'mongodb+srv://jtan09090:Pukimo1234@cluster0.wapvlcb.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0';
-
+const dbCloudUrl = 'mongodb+srv://jtan09090:Pukimo1234%40@cluster0.wapvlcb.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0';
 const dbLocalUrl = 'mongodb://localhost:27017/test';
 
 app.use(cors());
