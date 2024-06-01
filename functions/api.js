@@ -9,7 +9,7 @@ const app = express();
 const dbCloudUrl =
 'mongodb+srv://jtan09090:Pukimo1234@@cluster0.wapvlcb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-const dbLocalUrl = 'mongodb://localhost:27017/management';
+const dbLocalUrl = 'mongodb://localhost:27017/test';
 
 app.use(cors());
 app.use(express.json());
