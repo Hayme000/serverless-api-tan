@@ -17,7 +17,13 @@ const inventorySchema = new Schema({
     price: {
         type: Number,
         required: true,
-    }
+    },
+    brand: { 
+        type: String,
+        required: true },
+    manufacturer: {
+        type: String,
+        required: true }
 });
 
 module.exports = inventorySchema;
